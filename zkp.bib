@@ -44,6 +44,8 @@
 }
 
 @InProceedings{	  bcgtv2013,
+  graphtype	= {zkps},
+  buildson	= {groth2010},
   author	= {Ben-Sasson, Eli and Chiesa, Alessandro and Genkin, Daniel
 		  and Tromer, Eran and Virza, Madars},
   editor	= {Canetti, Ran and Garay, Juan A.},
@@ -79,6 +81,8 @@
 }
 
 @InProceedings{	  ggpr2013,
+  graphtype	= {zkps},
+  buildson	= {groth2010, lip2012},
   author	= {Gennaro, Rosario and Gentry, Craig and Parno, Bryan and
 		  Raykova, Mariana},
   editor	= {Johansson, Thomas and Nguyen, Phong Q.},
@@ -92,6 +96,8 @@
 }
 
 @InProceedings{	  pghr2013,
+  graphtype	= {zkps},
+  buildson	= {ggpr2013},
   author	= {Parno, Bryan and Gentry, Craig and Howell, Jon and
 		  Raykova, Mariana},
   booktitle	= {2013 IEEE Symposium on Security and Privacy},
@@ -104,6 +110,8 @@
 }
 
 @InProceedings{	  bcggmtv2014,
+  graphtype	= {circuits},
+  implements	= {bctv2014a},
   author	= {Ben-Sasson, Eli and Chiesa, Alessandro and Garman,
 		  Christina and Green, Matthew and Miers, Ian and Tromer,
 		  Eran and Virza, Madars},
@@ -118,6 +126,8 @@
 }
 
 @InProceedings{	  bctv2014a,
+  graphtype	= {zkps},
+  buildson	= {pghr2013, lip2013},
   author	= {Ben-Sasson, Eli and Chiesa, Alessandro and Tromer, Eran
 		  and Virza, Madars},
   title		= {Succinct Non-Interactive Zero Knowledge for a von Neumann
@@ -246,6 +256,9 @@
 }
 
 @InProceedings{	  groth2016,
+  graphtype	= {zkps},
+  buildson	= {lip2013, ggpr2013, pghr2013, bctv2014a, dfgk2014,
+		  bcct2013},
   author	= {Groth, Jens},
   editor	= {Fischlin, Marc and Coron, Jean-S{\'e}bastien},
   title		= {On the Size of Pairing-Based Non-interactive Arguments},
@@ -278,6 +291,8 @@
 }
 
 @Article{	  bctv2017,
+  graphtype	= {zkps},
+  buildson	= {lip2013},
   author	= {Ben-Sasson, Eli and Chiesa, Alessandro and Tromer, Eran
 		  and Virza, Madars},
   title		= {Scalable Zero Knowledge Via Cycles of Elliptic Curves},
@@ -324,6 +339,9 @@
 }
 
 @Misc{		  cryptoeprint:2017:602,
+  graphtype	= {mpcs},
+  buildson	= {bcgtv2015},
+  implements	= {bctv2014a},
   author	= {Bowe, Sean and Gabizon, Ariel and Green, Matthew D.},
   title		= {A multi-party protocol for constructing the public
 		  parameters of the Pinocchio zk-SNARK},
@@ -333,6 +351,8 @@
 }
 
 @InProceedings{	  gm2017,
+  graphtype	= {zkps},
+  buildson	= {groth2016},
   author	= {Groth, Jens and Maller, Mary},
   editor	= {Katz, Jonathan and Shacham, Hovav},
   title		= {Snarky Signatures: Minimal Signatures of Knowledge from
@@ -392,6 +412,8 @@
 }
 
 @Misc{		  cryptoeprint:2018:187,
+  graphtype	= {zkps},
+  buildson	= {groth2016},
   author	= {Bowe, Sean and Gabizon, Ariel},
   title		= {Making Groth's zk-SNARK Simulation Extractable in the
 		  Random Oracle Model},
@@ -442,6 +464,9 @@
 }
 
 @Unpublished{	  specification:zcash2018b30,
+  graphtype	= {circuits},
+  buildson	= {bcggmtv2014},
+  implements	= {groth2016},
   author	= {Hopwood, Daira and Bowe, Sean and Hornby, Taylor and
 		  Wilcox, Nathan},
   title		= {Zcash Protocol Specification, Version 2018.0-beta-30
