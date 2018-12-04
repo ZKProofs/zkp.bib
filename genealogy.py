@@ -14,9 +14,13 @@ args = parser.parse_args()
 with open('zkp.bib') as f:
     db = bibtexparser.load(f)
 
+graphtypes = set([entry['graphtype'] for entry in db.entries if 'graphtype' in entry.keys()])
+
 buildson = [
-    (entry['ID'], entry['buildson'])
-    for entry in db.entries if 'buildson' in entry.keys()
+    (graphtype, [
+        (entry['ID'], entry['buildson'])
+        for entry in db.entries if entry.get('graphtype', '') == graphtype and 'buildson' in entry.keys()
+    ]) for graphtype in graphtypes
 ]
 
 implements = [
@@ -26,8 +30,10 @@ implements = [
 
 # Convert to Mermaid
 mermaid = 'graph TD\n' + '\n'.join([
-    '%s --> %s' % (parent.strip(), entry[0]) for entry in buildson for parent in entry[1].split(',')
-] + [
+    'subgraph %s\n' % graphtype + '\n'.join([
+        '%s --> %s' % (parent.strip(), entry[0]) for entry in entries for parent in entry[1].split(',')
+    ]) + '\nend' for (graphtype, entries) in buildson
+]+ [
     '%s -.-> %s' % (parent.strip(), entry[0]) for entry in implements for parent in entry[1].split(',')
 ])
 
